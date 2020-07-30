@@ -1,0 +1,25 @@
+version: '3.4'
+
+services:
+  api:
+    image: node:14-alpine
+    container_name: food_api
+    build: .
+    command: yarn start:dev
+    volumes:
+      - type: bind
+        source: ./
+        target: /usr/src/app
+      - type: volume
+        source: nodemodules # name of the volume, see below
+        target: /usr/src/app/node_modules
+        volume:
+          nocopy: true
+    working_dir: /usr/src/app
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+volumes:
+  nodemodules:

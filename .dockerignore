@@ -1,0 +1,9 @@
+.git
+.gitignore
+.dockerignore
+Dockerfile
+dist
+node_modules
+npm-debug.log
+yarn-debug.log
+README.md
