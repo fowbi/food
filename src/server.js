@@ -8,4 +8,5 @@ const app = express();
 
 expressConfig(app);
 
+
 app.listen(config.port, () => console.log("Server started listening on " + config.port));
