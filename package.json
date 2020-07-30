@@ -6,6 +6,13 @@
   "repository": "git@github.com:fowbi/food.git",
   "author": "Tobi <tobi@magier.be>",
   "license": "MIT",
+  "scripts": {
+    "start:local": "nodemon start.js",
+    "start:dev": "node start.js",
+    "start:prod": "node ./dist/server.js",
+    "build": "yarn run clean && babel ./src --out-dir dist",
+    "clean": "rm -rf ./dist && mkdir dist"
+  },
   "dependencies": {
     "@babel/polyfill": "^7.10.4",
     "express": "^4.17.1"
