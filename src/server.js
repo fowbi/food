@@ -1,11 +1,8 @@
 "use strict";
 
 import express from "express";
+import config from "./config";
 
 const app = express();
 
-app.get("/", (request, response) => {
-  response.status(200).send("ok");
-});
-
-app.listen(3000, () => console.log("Server started"));
+app.listen(config.port, () => console.log("Server started listening on " + config.port));
