@@ -1,0 +1,9 @@
+{
+  "name": "food",
+  "version": "1.0.0",
+  "description": "Food",
+  "main": "src/server.js",
+  "repository": "git@github.com:fowbi/food.git",
+  "author": "Tobi <tobi@magier.be>",
+  "license": "MIT"
+}
