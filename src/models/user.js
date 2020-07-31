@@ -3,8 +3,8 @@
 import { DataTypes } from "sequelize";
 import bcrypt from "bcrypt";
 import { v4 as uuidv4 } from "uuid";
-import sequelize from "../Config/database";
-import Meal from "./Meal";
+import sequelize from "../config/storage";
+import Meal from "./meal";
 
 const User = sequelize.define("User", {
   id: {

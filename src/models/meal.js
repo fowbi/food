@@ -1,10 +1,10 @@
 "use strict";
 
 import { DataTypes } from "sequelize";
-import sequelize from "../Config/database";
+import sequelize from "../config/storage";
 import { v4 as uuidv4 } from "uuid";
 import { isValidType } from "./MealType";
-import User from "./User";
+import User from "./user";
 
 const Meal = sequelize.define("Meal", {
   id: {
