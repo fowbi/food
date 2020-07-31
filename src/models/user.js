@@ -2,6 +2,7 @@
 
 import { DataTypes } from "sequelize";
 import bcrypt from "bcrypt";
+import { v4 as uuidv4 } from "uuid";
 import sequelize from "../Config/database";
 import Meal from "./Meal";
 
@@ -26,6 +27,8 @@ const User = sequelize.define("User", {
     type: DataTypes.STRING
   }
 }, {});
+
+User.beforeCreate(user => user.id = uuidv4());
 
 User.beforeCreate(user => {
   return bcrypt.hash(user.pass, 10)

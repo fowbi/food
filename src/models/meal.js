@@ -2,6 +2,7 @@
 
 import { DataTypes } from "sequelize";
 import sequelize from "../Config/database";
+import { v4 as uuidv4 } from "uuid";
 import { isValidType } from "./MealType";
 import User from "./User";
 
@@ -25,6 +26,8 @@ const Meal = sequelize.define("Meal", {
   when: DataTypes.DATE,
   where: DataTypes.STRING,
 }, {});
+
+Meal.beforeCreate(meal => meal.id = uuidv4());
 
 Meal.belongsTo(User, {foreignKey: "user", targetKey: "id"});
 
