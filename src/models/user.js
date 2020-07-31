@@ -38,4 +38,6 @@ User.beforeCreate(user => {
     });
 });
 
+User.hasMany(Meal, { as: "meals", foreignKey: "fk_mealid", sourceKey: "id" });
+
 export default User;

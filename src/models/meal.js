@@ -3,6 +3,7 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../Config/database";
 import { isValidType } from "./MealType";
+import User from "./User";
 
 const Meal = sequelize.define("Meal", {
   id: {
@@ -22,8 +23,10 @@ const Meal = sequelize.define("Meal", {
   },
   what: DataTypes.STRING,
   when: DataTypes.DATE,
-  where: DataTypes.STRING
+  where: DataTypes.STRING,
 }, {});
+
+Meal.belongsTo(User, {foreignKey: "user", targetKey: "id"});
 
 
 export default Meal;
