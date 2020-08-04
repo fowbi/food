@@ -2,7 +2,6 @@
 
 import bcrypt from "bcrypt";
 import { v4 as uuidv4 } from "uuid";
-import Meal from "./meal";
 
 export default (sequelize, DataTypes) => {
   const User = sequelize.define("User", {
@@ -40,7 +39,9 @@ export default (sequelize, DataTypes) => {
       });
   });
 
-  User.hasMany(Meal, { as: "meals", foreignKey: "fk_mealid", sourceKey: "id" });
+  User.associate = models => {
+    User.hasMany(models.meal, { as: "meals", foreignKey: "fk_mealid", sourceKey: "id" });
+  };
 
   return User;
 };

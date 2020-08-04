@@ -1,13 +1,12 @@
-import Meal from "../../../models/meal";
-import User from "../../../models/user";
+import { models } from "../../../config/storage";
 
 const action = async (request, response, next) => {
   const { type, what, when, location } = request.body;
 
   // temp: all meals created will be attached to the seeded demo user.
-  const user = await User.findOne({ where: { name: "demo" } });
+  const user = await models.user.findOne({ where: { name: "demo" } });
 
-  await Meal.create({
+  await models.meal.create({
     type,
     what,
     when,

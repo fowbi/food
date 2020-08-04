@@ -2,7 +2,6 @@
 
 import { v4 as uuidv4 } from "uuid";
 import { isValidType } from "./MealType";
-import User from "./user";
 
 export default (sequelize, DataTypes) => {
   const Meal = sequelize.define("Meal", {
@@ -28,7 +27,9 @@ export default (sequelize, DataTypes) => {
 
   Meal.beforeCreate(meal => meal.id = uuidv4());
 
-  Meal.belongsTo(User, {foreignKey: "user", targetKey: "id"});
+  Meal.associate = models => {
+    Meal.belongsTo(models.user, {foreignKey: "user", targetKey: "id"});
+  };
 
   return Meal;
 };

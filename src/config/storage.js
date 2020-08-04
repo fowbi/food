@@ -1,6 +1,19 @@
-import { Sequelize } from "sequelize";
+import { DataTypes, Sequelize } from "sequelize";
 import config from "./../config/";
+import UserModel from "../models/user";
+import MealModel from "../models/meal";
 
 const { username, password, options } = config.storage;
 
-export default new Sequelize("food", username, password, options);
+const sequelize = new Sequelize("food", username, password, options);
+
+export const models = {
+  meal: MealModel(sequelize, DataTypes),
+  user: UserModel(sequelize, DataTypes),
+};
+
+Object.values(models)
+  .filter(model => typeof model.associate === "function")
+  .forEach(model => model.associate(models));
+
+export default sequelize;
