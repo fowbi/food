@@ -20,7 +20,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
-      where: {
+      location: {
         allowNull: false,
         type: Sequelize.STRING
       },

@@ -23,7 +23,7 @@ export default (sequelize, DataTypes) => {
     },
     what: DataTypes.STRING,
     when: DataTypes.DATE,
-    where: DataTypes.STRING,
+    location: DataTypes.STRING,
   }, {});
 
   Meal.beforeCreate(meal => meal.id = uuidv4());

@@ -2,7 +2,7 @@ import Meal from "../../../models/meal";
 import User from "../../../models/user";
 
 const action = async (request, response, next) => {
-  const { type, what, when, where } = request.body;
+  const { type, what, when, location } = request.body;
 
   // temp: all meals created will be attached to the seeded demo user.
   const user = await User.findOne({ where: { name: "demo" } });
@@ -11,7 +11,7 @@ const action = async (request, response, next) => {
     type,
     what,
     when,
-    where,
+    location,
     user: user.id,
   })
     .then(function(meal) {
