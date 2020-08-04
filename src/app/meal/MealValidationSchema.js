@@ -16,7 +16,7 @@ export default {
     isString: true,
     in: ["body"],
   },
-  where: {
+  location: {
     isString: true,
     in: ["body"],
   },
