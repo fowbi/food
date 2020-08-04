@@ -7,9 +7,10 @@
   "author": "Tobi <tobi@magier.be>",
   "license": "MIT",
   "scripts": {
-    "start:local": "nodemon start.js",
-    "start:dev": "node start.js",
-    "start:prod": "node ./dist/server.js",
+    "start:local": "NODE_ENV=development nodemon start.js",
+    "start:local:debug": "DEBUG=sequelize:sql* NODE_ENV=development nodemon start.js",
+    "start:dev": "NODE_ENV=development node start.js",
+    "start:prod": "NODE_ENV=production node ./dist/server.js",
     "build": "yarn run clean && babel ./src --out-dir dist",
     "clean": "rm -rf ./dist && mkdir dist"
   },
