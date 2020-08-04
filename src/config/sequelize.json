@@ -1,11 +1,11 @@
 {
   "development": {
     "dialect": "sqlite",
-    "storage": "data/givemeajob.sqlite"
+    "storage": "data/food.sqlite"
   },
   "test": {
     "dialect": "sqlite",
-    "storage": "data/givemeajob.sqlite"
+    "storage": "data/food.sqlite"
   },
   "production": {
     "dialect": "mysql"
