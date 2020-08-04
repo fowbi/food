@@ -5,6 +5,6 @@ import MealValidationSchema from "./MealValidationSchema";
 
 const router = express.Router();
 
-router.post("/addMeal", checkSchema(MealValidationSchema), addMeal);
+router.post("/", checkSchema(MealValidationSchema), addMeal);
 
 export default router;
