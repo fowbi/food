@@ -7,6 +7,10 @@ module.exports = {
     options: {
       dialect: "sqlite",
       storage: "data/food.sqlite",
+      //logging: ( queryString, queryObject ) => {
+        //console.log( queryString );      // outputs a string
+        //console.log( queryObject.bind ); // outputs an array
+      //}
     },
   },
 };
