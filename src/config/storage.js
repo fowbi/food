@@ -16,4 +16,6 @@ Object.values(models)
   .filter(model => typeof model.associate === "function")
   .forEach(model => model.associate(models));
 
+export const operation = Sequelize.Op;
+
 export default sequelize;
