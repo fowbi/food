@@ -11,7 +11,7 @@ const routeConfig = function (app) {
     }
 
     console.error(error.stack);
-    response.status(500).json({ error: error.stack });
+    response.status(500).json({ error: error.message });
   });
 
   app.use((request, response) => {
