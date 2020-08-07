@@ -3,6 +3,13 @@ import getMeals from "./Http/GetMeals";
 
 const router = express.Router();
 
-router.get("/meals/:when?", getMeals);
+const checkDate = (request, response, next) => {
+  if (isNaN(Date.parse(request.params.when))) {
+    throw new Error(`Invalid Date ${request.params.when}`);
+  }
+  next();
+};
+
+router.get("/meals/:when?", [checkDate], getMeals);
 
 export default router;
