@@ -1,9 +1,8 @@
 export const BREAKFAST = "breakfast";
 export const BRUNCH = "brunch";
-export const ELEVENSES = "elevenses";
 export const LUNCH = "lunch";
-export const TEA = "tea";
-export const SUPPER = "supper";
 export const DINNER = "dinner";
+export const DRINK = "drink";
+export const SNACK = "snack";
 
-export const isValidType = (type) => [BREAKFAST, BRUNCH, ELEVENSES, LUNCH, TEA, SUPPER, DINNER].includes(type.toLowerCase());
+export const isValidType = (type) => [BREAKFAST, BRUNCH, LUNCH, DINNER].includes(type.toLowerCase());
