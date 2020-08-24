@@ -21,6 +21,6 @@ COPY --from=builder /usr/src/app/dist ./dist
 
 USER node
 
-EXPOSE 3000
+EXPOSE 4000
 
 CMD ["yarn", "run", "start:prod"]

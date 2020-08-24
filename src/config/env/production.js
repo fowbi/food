@@ -1,5 +1,5 @@
 module.exports = {
-  port: process.env.PORT || 3000,
+  port: process.env.PORT || 4000,
   secret: process.env.SECRET || "super.sekret.key",
   storage: {
     username: process.env.DB_USERNAME || "root",
