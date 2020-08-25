@@ -2,18 +2,15 @@
   "development": {
     "dialect": "sqlite",
     "storage": "data/food.sqlite",
-    "dialectOptions": { "useUTC": true },
-    "timezone": "+02:00"
+    "dialectOptions": { "useUTC": true }
   },
   "test": {
     "dialect": "sqlite",
     "storage": "data/food.sqlite",
-    "dialectOptions": { "useUTC": true },
-    "timezone": "+02:00"
+    "dialectOptions": { "useUTC": true }
   },
   "production": {
     "dialect": "mysql",
-    "dialectOptions": { "useUTC": true },
-    "timezone": "+02:00"
+    "dialectOptions": { "useUTC": true }
   }
 }
