@@ -2,6 +2,7 @@
 
 import { v4 as uuidv4 } from "uuid";
 import { isValidType } from "./MealType";
+import { isValidQuality } from "./MealQuality";
 
 export default (sequelize, DataTypes) => {
   const Meal = sequelize.define("Meal", {
@@ -23,6 +24,14 @@ export default (sequelize, DataTypes) => {
     what: DataTypes.STRING,
     when: DataTypes.DATE,
     location: DataTypes.STRING,
+    quality: {
+      type: DataTypes.INTEGER,
+      validate: (value) => {
+        if (!isValidQuality(value)) {
+          throw new Error(`${value} is not a valid quality`);
+        }
+      },
+    },
   }, {});
 
   Meal.beforeCreate(meal => meal.id = uuidv4());
