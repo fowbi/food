@@ -10,4 +10,7 @@ module.exports = {
       database: process.env.DB_NAME || "food",
     },
   },
+  jwt: {
+    secret: process.env.JWT_SECRET || "super.sekret.jwt.key",
+  },
 };

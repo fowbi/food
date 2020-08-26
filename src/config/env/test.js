@@ -9,4 +9,7 @@ module.exports = {
       storage: "data/food.sqlite",
     },
   },
+  jwt: {
+    secret: process.env.JWT_SECRET || "super.sekret.jwt.key",
+  },
 };

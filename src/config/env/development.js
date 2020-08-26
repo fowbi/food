@@ -7,10 +7,9 @@ module.exports = {
     options: {
       dialect: "sqlite",
       storage: "data/food.sqlite",
-      //logging: ( queryString, queryObject ) => {
-        //console.log( queryString );      // outputs a string
-        //console.log( queryObject.bind ); // outputs an array
-      //}
     },
+  },
+  jwt: {
+    secret: process.env.JWT_SECRET || "super.sekret.jwt.key",
   },
 };
