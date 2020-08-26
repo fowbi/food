@@ -7,6 +7,8 @@ import routeConfig from "./config/routes";
 
 const app = express();
 
+require("./config/passport");
+
 expressConfig(app);
 routeConfig(app);
 

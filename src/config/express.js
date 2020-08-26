@@ -5,6 +5,7 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import methodOverride from "method-override";
 import helmet from "helmet";
+import passport from "passport";
 import config from "./index";
 
 const env = process.env.NODE_ENV || "development";
@@ -57,6 +58,8 @@ export const expressConfig = function (app) {
       }
     })
   );
+
+  app.use(passport.initialize());
 
   return app;
 };
