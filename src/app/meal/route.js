@@ -6,6 +6,7 @@ import deleteMeal from "./Http/DeleteMeal";
 import setMealQuality from "./Http/SetMealQuality";
 import MealValidationSchema from "./MealValidationSchema";
 import { isValidQuality } from "./../../models/MealQuality";
+import { authMiddleware } from "../../utils/authentication";
 
 const checkUuid = (request, response, next) => {
   if (!uuidValidate(request.params.id)) {
@@ -27,8 +28,11 @@ const checkQuality = (request, response, next) => {
 
 const router = express.Router();
 
+//router.post("/setQuality/:id", [authMiddleware, checkUuid, checkQuality], setMealQuality);
+//router.post("/addMeal", [authMiddleware, checkSchema(MealValidationSchema)], addMeal);
+//router.delete("/:id", [authMiddleware, checkUuid], deleteMeal);
 router.post("/setQuality/:id", [checkUuid, checkQuality], setMealQuality);
-router.post("/addMeal", checkSchema(MealValidationSchema), addMeal);
+router.post("/addMeal", [checkSchema(MealValidationSchema)], addMeal);
 router.delete("/:id", [checkUuid], deleteMeal);
 
 export default router;

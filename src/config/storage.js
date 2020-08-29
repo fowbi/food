@@ -5,7 +5,14 @@ import MealModel from "../models/meal";
 
 const { username, password, options } = config.storage;
 
-const sequelize = new Sequelize("food", username, password, options);
+const sequelize = new Sequelize("food", username, password, {
+  ...options,
+  logging: customLogger
+});
+function customLogger ( queryString, queryObject ) {
+  console.log( queryString );      // outputs a string
+  console.log( queryObject.bind ); // outputs an array
+}
 
 export const models = {
   meal: MealModel(sequelize, DataTypes),

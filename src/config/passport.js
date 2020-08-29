@@ -16,8 +16,9 @@ passport.use(
       usernameField: "username",
       passwordField: "password",
       session: false,
+      passReqToCallback : true,
     },
-    (username, password, done) => {
+    (request, username, password, done) => {
       try {
         models.user.findOne({
           where: {
@@ -28,7 +29,11 @@ passport.use(
             return done(null, false, "username is already taken");
           } else {
             bcrypt.hash(password, BCRYPT_SALT_ROUNDS).then(hashedPassword => {
-              models.user.create({ name: username, pass: hashedPassword }).then(user => {
+              models.user.create({
+                name: username,
+                pass: hashedPassword,
+                email: request.body.email,
+              }).then(user => {
                 return done(null, user);
               });
             });
@@ -56,12 +61,12 @@ passport.use(
             name: username,
           }
         }).then(user => {
-          if (user !== null) {
-            return done(null, false);
+          if (user === null) {
+            return done(true, null);
           } else {
             bcrypt.compare(password, user.pass).then(response => {
               if (response !== true) {
-                return done(null, false);
+                return done(true, null);
               }
 
               return done(null, user);
@@ -76,8 +81,9 @@ passport.use(
 );
 
 const options = {
-  jwtFromRequest: ExtractJWT.fromAuthHeaderWithScheme("JWT"),
+  jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
   secretOrKey: config.jwt.secret,
+  session: false,
 };
 
 passport.use(

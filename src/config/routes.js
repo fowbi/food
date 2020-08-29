@@ -2,6 +2,7 @@ import mealRoutes from "../app/meal/route";
 import userRoutes from "../app/user/route";
 
 const routeConfig = function (app) {
+
   app.use("/meal", mealRoutes);
   app.use("/user", userRoutes);
 

@@ -28,16 +28,16 @@ export default (sequelize, DataTypes) => {
 
   User.beforeCreate(user => user.id = uuidv4());
 
-  User.beforeCreate(user => {
-    return bcrypt.hash(user.pass, 10)
-      .then(hash => {
-        user.pass = hash;
-      })
-      .catch(err => {
-        console.log(err);
-        throw new Error();
-      });
-  });
+  //User.beforeCreate(user => {
+  //return bcrypt.hash(user.pass, 10)
+  //.then(hash => {
+  //user.pass = hash;
+  //})
+  //.catch(err => {
+  //console.log(err);
+  //throw new Error();
+  //});
+  //});
 
   return User;
 };
