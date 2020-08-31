@@ -15,7 +15,7 @@ const checkDate = (request, response, next) => {
 
 
 //router.get("/meals/:when?", [authMiddleware, checkDate], getMeals);
-router.get("/meals/:when?", [checkDate], getMeals);
+router.get("/meals/:when?", [authMiddleware, checkDate], getMeals);
 router.post("/register", register);
 router.post("/login", login);
 

@@ -17,11 +17,14 @@ const action = async (request, response, next) => {
         models.user
           .findOne({ where: { name: user.name } })
           .then(user => {
-            const token = jwt.sign({ id: user.id }, config.jwt.secret);
-            response.status(200).send({
-              auth: true,
-              token,
-            });
+            const token = jwt.sign(
+              { id: user.id, name: user.name },
+              config.jwt.secret,
+              { expiresIn: 60 }
+            );
+
+            response.setHeader("x-auth-token", token);
+            return response.status(200).send(JSON.stringify(user));
           });
       });
     }

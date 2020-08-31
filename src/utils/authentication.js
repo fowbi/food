@@ -1,4 +1,5 @@
 import passport from "passport";
+import jwt from "jsonwebtoken";
 
 export const authMiddleware = (request, response, next) => {
   passport.authenticate("jwt", { session: false }, (error, user, info) => {
@@ -7,6 +8,10 @@ export const authMiddleware = (request, response, next) => {
     }
 
     if (info !== undefined) {
+      if (info instanceof jwt.TokenExpiredError) {
+        response.status(401).send(info.message);
+        return;
+      }
       response.send(info.message);
     } else {
       next();
