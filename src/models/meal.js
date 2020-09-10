@@ -4,6 +4,8 @@ import { v4 as uuidv4 } from "uuid";
 import { isValidType } from "./MealType";
 import { isValidQuality } from "./MealQuality";
 
+const isValidQuantity = (quantity) => Number.isInteger(quantity) && quantity > 0;
+
 export default (sequelize, DataTypes) => {
   const Meal = sequelize.define("Meal", {
     id: {
@@ -29,6 +31,14 @@ export default (sequelize, DataTypes) => {
       validate: (value) => {
         if (!isValidQuality(value)) {
           throw new Error(`${value} is not a valid quality`);
+        }
+      },
+    },
+    quantity: {
+      type: DataTypes.INTEGER,
+      validate: (value) => {
+        if (!isValidQuantity(value)) {
+          throw new Error(`${value} is not a valid quantity`);
         }
       },
     },
