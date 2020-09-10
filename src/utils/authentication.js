@@ -14,6 +14,7 @@ export const authMiddleware = (request, response, next) => {
       }
       response.send(info.message);
     } else {
+      request.user = user;
       next();
     }
   })(request, response, next);

@@ -2,6 +2,7 @@ import express from "express";
 import getMeals from "./Http/GetMeals";
 import register from "./Http/Register";
 import login from "./Http/Login";
+import profile from "./Http/Profile";
 import { authMiddleware } from "../../utils/authentication";
 
 const router = express.Router();
@@ -13,10 +14,9 @@ const checkDate = (request, response, next) => {
   next();
 };
 
-
-//router.get("/meals/:when?", [authMiddleware, checkDate], getMeals);
 router.get("/meals/:when?", [authMiddleware, checkDate], getMeals);
 router.post("/register", register);
 router.post("/login", login);
+router.post("/profile", [authMiddleware], profile);
 
 export default router;

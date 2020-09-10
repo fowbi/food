@@ -20,11 +20,14 @@ const action = async (request, response, next) => {
             const token = jwt.sign(
               { id: user.id, name: user.name },
               config.jwt.secret,
-              { expiresIn: 60 }
+              { expiresIn: 60 * 60 }
             );
 
             response.setHeader("x-auth-token", token);
-            return response.status(200).send(JSON.stringify(user));
+            return response.status(200).send(JSON.stringify({
+              username: user.name,
+              email: user.email,
+            }));
           });
       });
     }
