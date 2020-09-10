@@ -20,4 +20,8 @@ export default {
     isString: true,
     in: ["body"],
   },
+  quantity: {
+    isNumber: true,
+    in: ["body"],
+  },
 };
