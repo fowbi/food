@@ -9,7 +9,6 @@ module.exports = {
         "quantity",
         {
           type: Sequelize.DataTypes.INTEGER,
-          allowNull: false,
           default: 1,
         },
         { transaction }
