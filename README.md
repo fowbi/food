@@ -3,7 +3,7 @@
 ## Set up:
 
 ```
-y
+yarn
 npx sequelize-cli db:migrate
-y start:dev
+yarn start:dev
 ```
